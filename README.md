@@ -1,0 +1,1 @@
+endpoint: http://image-filter-dev-omar.us-east-1.elasticbeanstalk.com/filteredimage?image_url=
