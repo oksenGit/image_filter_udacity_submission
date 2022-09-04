@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import {
 	filterImageFromURL,
@@ -33,9 +33,9 @@ import {
 	/**************************************************************************** */
 
 	//! END @TODO1
-	app.get("/filteredimage", async (req, res) => {
+	app.get("/filteredimage", async (req: Request , res: Response) => {
 		// validate image_url
-		const imageURL = req.query.image_url;
+		const imageURL: string = req.query.image_url;
 		if (!isValidHttpUrl(imageURL)) {
 			res.status(400).send("malformed image_url!");
 		}
@@ -52,7 +52,7 @@ import {
 			setTimeout(() => {
 				deleteLocalFiles([filteredImagePath]);
 			}, 5000);
-		} catch (ex) {
+		} catch (ex: unknown) {
 			res.status(500).send(`Image not supported try another url \n ${ex}`);
 		}
 	});
